@@ -1,4 +1,4 @@
-<h1 *ngIf="isAddMode">Create Account</h1>
+﻿<h1 *ngIf="isAddMode">Create Account</h1>
 <h1 *ngIf="!isAddMode">Edit Account</h1>
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="form-row">
@@ -52,13 +52,12 @@
         </div>
         <div class="form-group col">
             <label>Status</label>
-            <select formControlName="role" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.role.errors }">
-                <option value=""></option>
-                <option value="User">InActive</option>
-                <option value="Admin">Active</option>
+            <select formControlName="status" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.status?.errors }">
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
             </select>
-            <div *ngIf="submitted && f.role.errors" class="invalid-feedback">
-                <div *ngIf="f.role.errors.required">Role is required</div>
+            <div *ngIf="submitted && f.status?.errors" class="invalid-feedback">
+                <div *ngIf="f.status.errors?.required">Status is required</div>
             </div>
         </div>
     </div>
